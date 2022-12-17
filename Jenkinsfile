@@ -9,10 +9,10 @@ pipeline {
         stage("docker"){
             step {
                 echo "========executing A Ha Thanh Hai========"
-                docker.withRegistry('https://index.docker.io/v1/','dockerhub'){
-                    def app = docker.build("hathanhhai/node-jenkins-docker:${commit_id}", '.')
-                }
-            }
+            //     docker.withRegistry('https://index.docker.io/v1/','dockerhub'){
+            //         def app = docker.build("hathanhhai/node-jenkins-docker:${commit_id}", '.')
+            //     }
+            // }
         }
     }
   
