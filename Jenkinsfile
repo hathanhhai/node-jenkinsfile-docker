@@ -3,6 +3,11 @@ pipeline {
           docker { image 'node:16.13.1-alpine' }
     }
     stages {
+        stage('Test') {
+            steps {
+                sh 'node --version'
+            }
+        }
         stage('clone'){
             steps  {
                 git 'https://github.com/hathanhhai/node-jenkinsfile-docker.git'
