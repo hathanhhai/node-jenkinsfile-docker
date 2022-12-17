@@ -1,5 +1,5 @@
-pipeline {
-    agent any
+node {
+    def commit_id
     stages {
         stage('clone'){
             steps  {
