@@ -6,12 +6,14 @@ pipeline {
                 git 'https://github.com/hathanhhai/node-jenkinsfile-docker.git'
             }
         }
-        stage("docker"){
+        stage("build"){
             steps {
-                echo "========executing A Ha Thanh Hai========aaa"
-                // docker.withRegistry('https://index.docker.io/v1/','dockerhub'){
-                //     def app = docker.build("hathanhhai/node-jenkins-docker:${commit_id}", '.')
-                // }
+               sh 'docker build -t app-node .'
+            }
+        }
+        stage("docker run app"){
+            steps {
+               sh 'docker run -p 3001:3001 --name app-node -d'
             }
         }
     }
