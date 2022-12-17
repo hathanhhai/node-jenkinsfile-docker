@@ -1,13 +1,8 @@
 pipeline {
     agent {
-          docker { image 'node:16.13.1-alpine' }
+          label 'main-host'
     }
     stages {
-        stage('Test') {
-            steps {
-                sh 'node --version'
-            }
-        }
         stage('clone'){
             steps  {
                 git 'https://github.com/hathanhhai/node-jenkinsfile-docker.git'
