@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        docker {image 'node:16-alpine'}
+    }
     stages {
        
         stage('clone'){
@@ -7,16 +9,21 @@ pipeline {
                 git 'https://github.com/hathanhhai/node-jenkinsfile-docker.git'
             }
         }
-        stage("build"){
+         stage("test"){
             steps {
-               sh 'docker build -t app-node .'
+               sh 'node --version'
             }
         }
-        stage("docker run app"){
-            steps {
-               sh 'docker run -p 3001:3001 --name app-node -d'
-            }
-        }
+        // stage("build"){
+        //     steps {
+        //        sh 'docker build -t app-node .'
+        //     }
+        // }
+        // stage("docker run app"){
+        //     steps {
+        //        sh 'docker run -p 3001:3001 --name app-node -d'
+        //     }
+        // }
     }
   
 }
