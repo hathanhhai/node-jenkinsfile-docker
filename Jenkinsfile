@@ -1,12 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('Initialize'){
-            step {
-                def dockerHome = tool 'myDocker'
-                env.PATH = "${dockerHome}/bin:${env.PATH}"
-            }
-        }
+       
         stage('clone'){
             steps  {
                 git 'https://github.com/hathanhhai/node-jenkinsfile-docker.git'
