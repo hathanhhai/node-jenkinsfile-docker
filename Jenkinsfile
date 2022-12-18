@@ -17,11 +17,11 @@ pipeline {
                sh 'docker build -t app-node .'
             }
         }
-        stage("docker run app"){
-            steps {
-               sh 'docker run -p 3001:3001 --name app-node '
-            }
-        }
+        // stage("docker run app"){
+        //     steps {
+        //        sh 'docker run -p 3000:3000 --name app-node '
+        //     }
+        // }
     }
   
 }
