@@ -19,7 +19,7 @@ pipeline {
         }
         stage("docker run app"){
             steps {
-               sh 'docker run -p 3000:3000 -d --name app-node '
+               sh 'docker run -p 3000:3000 -it app-node'
             }
         }
     }
