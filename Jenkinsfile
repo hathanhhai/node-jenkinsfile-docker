@@ -14,7 +14,7 @@ pipeline {
         // }
         stage("build"){
             steps {
-               echo 'Testing..'
+               echo 'Testing..11'
             }
         }
         stage("docker run app"){
