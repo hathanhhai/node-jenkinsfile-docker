@@ -14,12 +14,12 @@ pipeline {
         // }
         stage("build"){
             steps {
-               sh 'docker build -t app-node .'
+               echo 'Testing..'
             }
         }
         stage("docker run app"){
             steps {
-               sh 'docker run -p 3000:3000 app-node'
+            //    sh 'docker run -p 3000:3000 app-node'
             }
         }
     }
