@@ -15,13 +15,13 @@ pipeline {
             }
         }
         
-        // stage('Build docker image'){
-        //     steps{
-        //         script{
-        //             sh 'docker build -t app-node .'
-        //         }
-        //     }
-        // }
+        stage('Build docker image'){
+            steps{
+                script{
+                    sh 'docker build -t app-node .'
+                }
+            }
+        }
         // stage("docker run app"){
         //     steps {
         //        sh 'docker run -p 3000:3000 app-node'
