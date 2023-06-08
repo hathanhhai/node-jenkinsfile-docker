@@ -9,24 +9,18 @@ pipeline {
             }
         }
         
-        stage("build"){
-            agent {
-                docker {
-                    image 'node:14-buster'
+        stage('Build docker image'){
+            steps{
+                script{
+                    sh 'docker build -t app-node .'
                 }
             }
-            steps {
-              echo 'hà Thanh Hải'
-            } 
-            // steps {
-            //    sh 'docker build -t app-node .'
-            // }
         }
-        // stage("docker run app"){
-        //     steps {
-        //        sh 'docker run -p 3000:3000 app-node'
-        //     }
-        // }
+        stage("docker run app"){
+            steps {
+               sh 'docker run -p 3000:3000 app-node'
+            }
+        }
     }
   
 }
