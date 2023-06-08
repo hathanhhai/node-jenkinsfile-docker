@@ -8,6 +8,12 @@ pipeline {
                 git 'https://github.com/hathanhhai/node-jenkinsfile-docker.git'
             }
         }
+
+         stage("docker run app"){
+            steps {
+             echo "ha thanh hai"
+            }
+        }
         
         stage('Build docker image'){
             steps{
@@ -21,6 +27,8 @@ pipeline {
                sh 'docker run -p 3000:3000 app-node'
             }
         }
+
+        
     }
   
 }
