@@ -1,6 +1,10 @@
 FROM node:16
+COPY . /app
 WORKDIR /app
-ADD . /app
-RUN npm install
+RUN npm install 
+
+FROM gcr.io/distroless/nodejs
+COPY --from=dep /app /app
+WORKDIR /app
 EXPOSE 3000
-CMD npm start
+CMD ["index.js"]
