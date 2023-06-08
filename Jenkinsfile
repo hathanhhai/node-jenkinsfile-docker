@@ -9,7 +9,7 @@ pipeline {
             }
         }
 
-     tage('test') {
+     stage('test') {
       steps {
         sh "docker container run --rm -w /app -v \$(pwd):/app node:10.17.0 bash -c 'npm i -D && npm run test && rm -rf node_modules/'"
       }
