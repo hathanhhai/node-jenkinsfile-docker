@@ -3,25 +3,30 @@ pipeline {
     stages {
        
         stage('clone'){
+            
             steps  {
                 git 'https://github.com/hathanhhai/node-jenkinsfile-docker.git'
             }
         }
-         stage("test"){
-            steps {
-               sh 'node --version'
-            }
-        }
+        
         stage("build"){
-            steps {
-               sh 'docker build -t app-node .'
+            agent {
+                docker {
+                    image 'node:14-buster'
+                }
             }
-        }
-        stage("docker run app"){
             steps {
-               sh 'docker run -p 3000:3000 app-node'
-            }
+              echo 'hà Thanh Hải'
+            } 
+            // steps {
+            //    sh 'docker build -t app-node .'
+            // }
         }
+        // stage("docker run app"){
+        //     steps {
+        //        sh 'docker run -p 3000:3000 app-node'
+        //     }
+        // }
     }
   
 }
