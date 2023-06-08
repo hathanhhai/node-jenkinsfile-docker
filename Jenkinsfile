@@ -22,7 +22,7 @@ pipeline {
                 }
             }
         }
-        stage("docker run app"){
+        stage("run app"){
             steps {
                sh 'docker run -p 3000:3000 app-node'
             }
