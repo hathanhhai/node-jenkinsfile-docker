@@ -22,11 +22,11 @@ pipeline {
                 }
             }
         }
-        // stage("docker run app"){
-        //     steps {
-        //        sh 'docker run -p 3000:3000 app-node'
-        //     }
-        // }
+        stage("docker run app"){
+            steps {
+               sh 'docker run -p 3000:3000 app-node'
+            }
+        }
 
         
     }
