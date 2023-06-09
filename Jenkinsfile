@@ -37,8 +37,8 @@ pipeline {
         stage('Docker push'){
              steps {
                 withDockerRegistry([credentialsId: "docker-hub", url: "https://index.docker.io/v1/"]) {
-                          sh 'docker tag node_test hathanhhai/node/test:v1'
-                    sh "docker push hathanhhai/node/test:v1"
+                    sh 'docker tag node_test hathanhhai/node_test:v1'
+                    sh "docker push hathanhhai/node_test:v1"
                 }
             }
         }
