@@ -27,7 +27,7 @@ pipeline {
 
         stage('Deploy to remote docker host') {
             steps {
-                script 
+                script {
                     sh 'docker stop app-node'
                     sh 'docker rm app-node'
                     sh 'docker rmi app-node:current'
