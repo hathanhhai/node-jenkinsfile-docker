@@ -28,8 +28,8 @@ pipeline {
         stage('Deploy to remote docker host') {
             steps {
                 script {
-                    sh 'docker ps -f name=app-node -q | xargs --no-run-if-empty docker container stop e'
-                    sh 'docker container ls -a -fname=app-node -q | xargs -r docker container rm'
+                    sh 'docker stop app-node || true'
+                    sh 'docker rm app-node || true'
                     sh 'docker run -d -p 3000:3000 app-node '
                 }
             }
