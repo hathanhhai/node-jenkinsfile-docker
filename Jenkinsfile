@@ -27,15 +27,16 @@ pipeline {
             }
         }
 
-        stage('Docker login'){
-            steps{
-                sh ' echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+        // stage('Docker login'){
+        //     steps{
+        //         sh ' echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                 
-            }
-        }
+        //     }
+        // }
 
         stage('Docker push'){
              steps {
+                    sh 'docker login -u "hathanhhai" -p "Thanhhaiqw1" docker.io'
                  sh "docker push app-node/test:v1"
                 // withDockerRegistry([credentialsId: "docker-hub", url: "https://index.docker.io/v1/"]) {
                 //     sh "docker push app-node/test:v1"
