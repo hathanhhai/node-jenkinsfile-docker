@@ -44,10 +44,10 @@ pipeline {
                 
                 script {
                     sh 'docker pull hathanhhai/node_test:v1'
-                    sh 'docker stop $(docker stop $(docker ps -a -q --filter ancestor=node_test --format="{{.ID}}"))'
-                    sh 'docker rm $(docker stop $(docker ps -a -q --filter ancestor=node_test --format="{{.ID}}"))'
+                    sh 'docker stop app_node || true'
+                    sh 'docker rm app_node || true'
                     sh 'docker rmi -f hathanhhai/node_test:v1'
-                    sh 'docker run -d -p 3000:3000 node_test '
+                    sh 'docker run -d -p 3000:3000 --name app_node node_test  '
                 }
             }
         }
