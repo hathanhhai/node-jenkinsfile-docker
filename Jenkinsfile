@@ -35,19 +35,10 @@ pipeline {
         }
 
         stage('Docker push'){
-            steps{
-                //   withDockerRegistry([credentialsId: "docker-hub", url: "https://index.docker.io/v1/"]) {
-                //     sh "docker push app-node/test:v1"
-                // }  
-
-                 withCredentials([usernamePassword( credentialsId: 'docker-hub', usernameVariable: 'hathanhhai', passwordVariable: 'Thanhhaiqw1')]) {
-                    def registry_url = "registry.hub.docker.com/"
-                    sh "docker login -u $USER -p $PASSWORD ${registry_url}"
-                    docker.withRegistry("http://${registry_url}", "docker-hub") {
-                        // Push your image now
-                        sh "docker push app-node/test:v1 "
-                    }
-                }       
+             steps {
+                withDockerRegistry([credentialsId: "docker-hub", url: "https://index.docker.io/v1/"]) {
+                    bat "docker push app-node/test:v1"
+                }
             }
         }
 
