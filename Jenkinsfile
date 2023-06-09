@@ -36,9 +36,10 @@ pipeline {
 
         stage('Docker push'){
              steps {
-                withDockerRegistry([credentialsId: "docker-hub", url: "https://index.docker.io/v1/"]) {
-                    bat "docker push app-node/test:v1"
-                }
+                 sh "docker push app-node/test:v1"
+                // withDockerRegistry([credentialsId: "docker-hub", url: "https://index.docker.io/v1/"]) {
+                //     sh "docker push app-node/test:v1"
+                // }
             }
         }
 
