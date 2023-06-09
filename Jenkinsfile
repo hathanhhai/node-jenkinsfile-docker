@@ -35,7 +35,7 @@ pipeline {
         }
 
         stage('Docker psuh'){
-            steps{
+            // steps{
                 //   withDockerRegistry([credentialsId: "docker-hub", url: "https://index.docker.io/v1/"]) {
                 //     sh "docker push app-node/test:v1"
                 // }  
@@ -48,7 +48,7 @@ pipeline {
                         sh "docker push app-node/test:v1 "
                     }
                 }       
-            }
+            // }
         }
 
 
