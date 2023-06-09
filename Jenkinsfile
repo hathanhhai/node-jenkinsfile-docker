@@ -28,9 +28,9 @@ pipeline {
         stage('Deploy to remote docker host') {
             steps {
                 script {
-                    sh 'docker stop app-node'
-                    sh 'docker rm app-node'
-                    sh 'docker rmi app-node:current'
+                    sh 'docker ps -q --filter "name=$name" | xargs -r docker stop'
+                    sh 'docker ps -aq --filter "name=$name" | xargs -r docker rm'
+                    // sh 'docker rmi app-node:current'
                     sh 'docker tag app-node antonml/node-demo:current'
                     sh 'docker run -d --name app-node -p 3000:3000 app-node:current'
                 }
