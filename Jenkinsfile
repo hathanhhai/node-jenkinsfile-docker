@@ -6,9 +6,8 @@ pipeline {
     stages {
        
         stage('clone'){
-            
             steps  {
-                git 'https://github.com/hathanhhai/node-jenkinsfile-docker.git'
+              checkout scm
             }
         }
 
