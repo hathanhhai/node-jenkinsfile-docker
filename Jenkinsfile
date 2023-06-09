@@ -26,14 +26,14 @@ pipeline {
         //     }
         // }
 
-        stage('Docker push'){
-             steps {
-                withDockerRegistry([credentialsId: "docker-hub", url: "https://index.docker.io/v1/"]) {
-                    sh 'docker tag node_test hathanhhai/node_test:v1'
-                    sh "docker push hathanhhai/node_test:v1"
-                }
-            }
-        }
+        // stage('Docker push'){
+        //      steps {
+        //         withDockerRegistry([credentialsId: "docker-hub", url: "https://index.docker.io/v1/"]) {
+        //             sh 'docker tag node_test hathanhhai/node_test:v1'
+        //             sh "docker push hathanhhai/node_test:v1"
+        //         }
+        //     }
+        // }
 
 
 
@@ -42,7 +42,7 @@ pipeline {
             steps {
                 
                 script {
-                    sh 'docker pull hathanhhai/node_test:v1'
+                    // sh 'docker pull hathanhhai/node_test:v1'
                     sh 'docker stop app_node || true'
                     sh 'docker rm app_node || true'
                     sh 'docker rmi -f hathanhhai/node_test:v1'
