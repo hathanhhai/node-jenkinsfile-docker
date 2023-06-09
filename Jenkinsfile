@@ -12,14 +12,7 @@ pipeline {
             }
         }
 
-         stage("docker run app"){
-            steps {
-             echo "ha thanh hai"
-            }
-        }
-
-        
-        
+       
         stage('Build docker image'){
             steps{
                 sh 'docker build -t node_test . '
@@ -52,7 +45,7 @@ pipeline {
                 script {
                     sh 'docker pull hathanhhai/node_test:v1'
                     sh 'docker stop node_test|| true'
-                    sh 'docker rm node_test|| true'
+                    sh 'docker rm -f node_test|| true'
                     sh 'docker run -d -p 3000:3000 node_test '
                 }
             }
