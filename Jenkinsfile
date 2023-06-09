@@ -14,12 +14,16 @@ pipeline {
              echo "ha thanh hai"
             }
         }
+
+        
         
         stage('Build docker image'){
             steps{
-                script{
-                    sh 'docker build -t app-node .'
-                }
+                    withDockerRegistry(credentialsId: 'docker-hub', url: 'https://index.docker.io/v1/') {
+                        sh 'docker build -t app-node/test:v1 . '
+                        sh 'docker push  app-node/test:v1 '
+
+                    }
             }
         }
 
@@ -27,6 +31,7 @@ pipeline {
 
         stage('Deploy to remote docker host') {
             steps {
+                
                 script {
                     sh 'docker stop app-node || true'
                     sh 'docker rm app-node || true'
