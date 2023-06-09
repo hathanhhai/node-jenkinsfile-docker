@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-          node {
-            label 'docker-pineline'
-        }
-    }
+    agent any
     stages {
        
         stage('clone'){
@@ -26,6 +22,9 @@ pipeline {
                 }
             }
         }
+
+
+
         // stage("run app"){
         //     steps {
         //        sh 'docker run -i -p 3000:3000 app-node'
