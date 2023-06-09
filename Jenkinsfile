@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        DOCKERHUB_CREDENTIALS = credentials('docker-hub')
+    }
     stages {
        
         stage('clone'){
@@ -19,13 +22,24 @@ pipeline {
         
         stage('Build docker image'){
             steps{
-                    withDockerRegistry(credentialsId: 'docker-hub', url: 'https://index.docker.io/v1/') {
-                        sh 'docker build -t app-node/test:v1 . '
-                        sh 'docker push  app-node/test:v1 '
-
-                    }
+                sh 'docker build -t app-node/test:v1 . '
+                
             }
         }
+
+        stage('Docker login'){
+            steps{
+                sh ' echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                
+            }
+        }
+
+        stage('Docker psuh'){
+            steps{
+                sh 'docker push app-node/test:v1'
+            }
+        }
+
 
 
 
