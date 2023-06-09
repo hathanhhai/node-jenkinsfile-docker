@@ -50,9 +50,10 @@ pipeline {
             steps {
                 
                 script {
-                    sh 'docker stop app-node || true'
-                    sh 'docker rm app-node || true'
-                    sh 'docker run -d -p 3000:3000 app-node '
+                    sh 'docker pull hathanhhai/node_test:v1'
+                    sh 'docker stop node_test|| true'
+                    sh 'docker rm node_test|| true'
+                    sh 'docker run -d -p 3000:3000 node_test '
                 }
             }
         }
